@@ -1,0 +1,25 @@
+name: ci-pipeline
+on: 
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name : welcome step 
+        run : echo "Welcome to GH actions"
+      - name : checkout repository 
+        uses : actions/checkout@v4 
+      - name : Repository information 
+        run: |
+          echo "Repository Name :${{github.repository}}"
+          echo "Type of events : ${{github.event_name}}"
+          git remote -v 
+          git branch
+          git log 
+          git branch feature/issue#1
+          
